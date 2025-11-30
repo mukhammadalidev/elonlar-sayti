@@ -1,10 +1,49 @@
 from django.shortcuts import render
 from django.views import View
-from advertisement.models import CategoryModel
+from advertisement.models import CategoryModel,Job
+from django.db.models import Q
+from django.core.paginator import Paginator
 # Create your views here.
 
 
 class IndexView(View):
     def get(self,request):
+
+
         category = CategoryModel.objects.all()
-        return render(request,'index.html',context={"categories":category})
+        latest_jobs = Job.objects.all().order_by('-created_at')[:9]
+
+        print(latest_jobs.first().employer.logo)
+        return render(request,'index.html',context={"categories":category,"latest_jobs":latest_jobs})
+    
+
+def search(request):
+    query = request.GET.get("q","")
+    result = Job.objects.filter(Q(title__icontains=query)) | Job.objects.filter(Q(description__icontains=query))
+    print(result)
+    return render(
+        request,
+        "index.html",
+        {
+            "latest_jobs":result
+        }
+    )
+
+
+
+
+
+class SearchView(View):
+    def get(self, request):
+        query = request.GET.get("q", "")
+
+        jobs = Job.objects.all()
+
+        if query:
+            jobs = jobs.filter(title__icontains=query) | jobs.filter(description__icontains=query)
+
+        context = {
+            "query": query,
+            "jobs": jobs
+        }
+        return render(request, "category/search.html", context)

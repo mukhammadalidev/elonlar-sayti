@@ -28,6 +28,7 @@ class Job(models.Model):
     salary = models.CharField(max_length=100, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=155)
+    phone_number = models.CharField(max_length=14,default='998992606296')
 
     def __str__(self):
         return self.title

@@ -43,6 +43,16 @@
                 <p class="mb-1"><strong>Maosh:</strong> {{ product.salary|default:"Kelishilgan" }}</p>
                 <p class="mb-1"><strong>Kategoriya:</strong> {{ product.category.name }}</p>
                 <p class="mb-1"><strong>Joylashuv:</strong> {{ product.location }}</p>
+            {% comment %} product.phone_number = '998901234567' {% endcomment %}
+<p class="mb-1">
+    <strong>Telefon Nomer:</strong> 
+    +{{ product.phone_number|slice:":3" }} 
+    {{ product.phone_number|slice:"3:5" }} 
+    {{ product.phone_number|slice:"5:8" }} 
+    {{ product.phone_number|slice:"8:10" }} 
+    {{ product.phone_number|slice:"10:12" }}
+</p>
+
                 <p class="mb-1"><strong>Sana:</strong> {{ product.created_at|date:"d.m.Y" }}</p>
             </div>
 
