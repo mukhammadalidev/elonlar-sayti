@@ -115,6 +115,55 @@
     </div>
 </div>
 {% endfor %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <div class="row g-4">
+                <!-- Chap tomon: matn -->
+                <div class="col-md-6 d-flex flex-column justify-content-center">
+                    <h2 class="fw-bold">Biz bilan bog‘laning</h2>
+                    <p class="text-muted">Savollaringiz bo‘lsa yoki yordam kerak bo‘lsa, bizga yozing. Biz tez orada siz bilan bog‘lanamiz va barcha savollaringizga javob beramiz.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2"><i class="fa fa-phone me-2"></i>+998 90 123 45 67</li>
+                        <li class="mb-2"><i class="fa fa-envelope me-2"></i>info@ishizla.uz</li>
+                        <li><i class="fa fa-map-marker-alt me-2"></i>Buxoro, O‘zbekiston</li>
+                    </ul>
+                </div>
+
+
+            <!-- O‘ng tomon: forma -->
+            <div class="col-md-6">
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ism</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Ismingiz" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email manzilingiz" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Xabar</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Xabaringizni kiriting" required></textarea>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-paper-plane me-1"></i> Yuborish
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
 
 
     </div>

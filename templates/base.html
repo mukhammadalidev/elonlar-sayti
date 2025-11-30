@@ -59,6 +59,12 @@
                 <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                <li class="nav-item">
+                    <a href="{% url 'job:add_ads' %}" class=" btn btn-outline-primary ms-2 d-flex align-items-center">
+                      <i class="fa fa-plus-circle me-1"></i>   Elon Berish
+                    </a>
+                </li>
+                &nbsp;
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url 'users:profile' %}" class="btn btn-outline-primary me-2 d-flex align-items-center">

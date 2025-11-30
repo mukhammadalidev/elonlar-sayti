@@ -32,6 +32,11 @@ class UserLoginView(View):
 
 def profile_view(request):
     user = request.user
+
+    if request.method == 'PUT':
+        profile = Profile(request.FORM)
+        if profile.is_valid():
+            profile
     return render(request,'pages/profile.html')
 
 

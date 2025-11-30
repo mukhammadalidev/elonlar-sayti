@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from .views import IndexView,search,SearchView
+from .views import IndexView,search,SearchView,contact_view
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,5 +26,6 @@ urlpatterns = [
     path('',IndexView.as_view(),name="home"),
     path('advertisements/',include('advertisement.urls')),
     path('accounts/',include('users.urls')),
-    path('search/',SearchView.as_view(),name="search")
+    path('search/',SearchView.as_view(),name="search"),
+    path("contact/", contact_view, name="contact"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

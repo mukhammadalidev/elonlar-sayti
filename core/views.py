@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.contrib import messages
 from django.views import View
 from advertisement.models import CategoryModel,Job
 from django.db.models import Q
@@ -47,3 +48,14 @@ class SearchView(View):
             "jobs": jobs
         }
         return render(request, "category/search.html", context)
+    
+
+def contact_view(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+        # Bu yerda siz xabarni saqlashingiz yoki email yuborishingiz mumkin
+        messages.success(request, "Xabaringiz yuborildi, rahmat!")
+        return redirect("contact")
+    return render(request, "contact.html")

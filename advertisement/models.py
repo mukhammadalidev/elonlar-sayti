@@ -22,13 +22,13 @@ class EmployerProfile(models.Model):
 
 class Job(models.Model):
     employer = models.ForeignKey(EmployerProfile, on_delete=models.CASCADE, related_name="jobs")
-    category = models.ForeignKey(CategoryModel,on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    salary = models.CharField(max_length=100, blank=True, null=True)
+    category = models.ForeignKey(CategoryModel,on_delete=models.CASCADE,verbose_name='Kategorya')
+    title = models.CharField(max_length=255,verbose_name='Sarlovha')
+    description = models.TextField(verbose_name='Tasnif')
+    salary = models.CharField(max_length=100, blank=True, null=True,verbose_name='Maosh')
     created_at = models.DateTimeField(auto_now_add=True)
-    location = models.CharField(max_length=155)
-    phone_number = models.CharField(max_length=14,default='998992606296')
+    location = models.CharField(max_length=155,verbose_name='Manzil')
+    phone_number = models.CharField(max_length=14,default='998992606296',verbose_name='Telefon raqam')
 
     def __str__(self):
         return self.title
