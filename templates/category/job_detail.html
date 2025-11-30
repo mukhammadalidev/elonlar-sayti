@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Back button -->
+    <a href="javascript:history.back()" class="btn btn-outline-secondary mb-3">
+        <i class="fa-solid fa-arrow-left"></i> Orqaga
+    </a>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+
+            <!-- Ish sarlavhasi -->
+            <h2 class="fw-bold mb-3">{{ product.title }}</h2>
+
+            <!-- Kompaniya bloki -->
+            <div class="d-flex align-items-center mb-4">
+                {% if product.employer.logo %}
+                    <img src="{{ product.employer.logo.url }}" 
+                         class="rounded-circle me-3" 
+                         width="70" height="70" 
+                         style="object-fit: cover;">
+                {% endif %}
+
+                <div>
+                    <h5 class="mb-0">
+                        <a href="" class="text-decoration-none">
+                            {{ product.employer.company_name }}
+                        </a>
+                    </h5>
+                    <p class="text-muted mb-0">Ish beruvchi</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Ish tafsilotlari -->
+            <h4 class="fw-semibold">Ish haqida</h4>
+            <p class="mt-2" style="line-height: 1.7;">{{ product.description }}</p>
+
+            <div class="mt-4">
+                <p class="mb-1"><strong>Maosh:</strong> {{ product.salary|default:"Kelishilgan" }}</p>
+                <p class="mb-1"><strong>Kategoriya:</strong> {{ product.category.name }}</p>
+                <p class="mb-1"><strong>Joylashuv:</strong> {{ product.location }}</p>
+                <p class="mb-1"><strong>Sana:</strong> {{ product.created_at|date:"d.m.Y" }}</p>
+            </div>
+
+            <hr>
+
+            <!-- Action buttons -->
+            <div class="d-flex gap-3 mt-4">
+
+                <button class="btn btn-primary d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Ishga topshirish
+                </button>
+
+                <a href="" 
+                   class="btn btn-outline-dark d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-building"></i>
+                    Kompaniya profili
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
