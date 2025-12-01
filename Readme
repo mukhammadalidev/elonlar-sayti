@@ -1,0 +1,114 @@
+# Ish Izla - Ish Elonlari Platformasi
+
+![Ish Izla Logo](link-to-logo.png)
+
+**Ish Izla** — bu foydalanuvchilarga eng so‘nggi ish imkoniyatlarini topish, ariza yuborish va ish beruvchilar bilan bog‘lanish imkonini beruvchi veb-platforma.
+
+## 📌 Loyiha Haqida
+
+* Foydalanuvchilar ro‘yxatdan o‘tadi va o‘z profilini yaratadi.
+* Ish beruvchilar kompaniya profili yaratadi va ish e’lonlarini joylashtiradi.
+* Foydalanuvchilar ish e’lonlariga ariza yuborishi mumkin.
+* Arizalar ish beruvchi profilida ko‘rinadi va ular bilan bog‘lanish mumkin.
+* Platforma **Bootstrap 5**, **Crispy Forms**, **Django** va **PostgreSQL** asosida ishlab chiqilgan.
+
+## 💻 Texnologiyalar
+
+* **Backend:** Django, Django Rest Framework
+* **Frontend:** HTML, CSS, Bootstrap 5, Font Awesome
+* **Forms:** Django Crispy Forms
+* **Database:** PostgreSQL
+* **Authentication:** CustomUser model, login via email/phone
+* **Deployment:** VPS yoki Heroku
+
+## 🛠 Asosiy Xususiyatlar
+
+1. **Foydalanuvchi paneli:**
+
+   * Profilni ko‘rish va tahrirlash
+   * Ariza yuborish
+2. **Ish beruvchi paneli:**
+
+   * Kompaniya profili yaratish
+   * Ish e’lonlarini joylashtirish, tahrirlash va o‘chirish
+3. **Ish e’lonlari:**
+
+   * Kategoriya bo‘yicha filtrlash
+   * Tafsilotli ko‘rinish
+   * Telefon va email orqali bog‘lanish
+4. **Responsive dizayn:**
+
+   * Mobil va desktop uchun moslashgan
+5. **Kontakt va FAQ sahifalari**
+
+## 🚀 O‘rnatish
+
+1. Repozitoriyani klonlash:
+
+```bash
+git clone https://github.com/username/ish-izla.git
+cd ish-izla
+```
+
+2. Virtual muhit yaratish va aktivlashtirish:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # Mac/Linux
+venv\Scripts\activate     # Windows
+```
+
+3. Kerakli paketlarni o‘rnatish:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Ma’lumotlar bazasini migratsiya qilish:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+5. Superuser yaratish:
+
+```bash
+python manage.py createsuperuser
+```
+
+6. Loyihani ishga tushirish:
+
+```bash
+python manage.py runserver
+```
+
+## 📂 Loyihani Strukturasi
+
+```
+ish-izla/
+│
+├── ads/               # Ish e’lonlari app
+├── users/             # Foydalanuvchi app
+├── templates/         # HTML shablonlar
+├── static/            # CSS, JS, rasmlar
+├── manage.py
+├── requirements.txt
+└── README.md
+
+
+## 🤝 Hissa Qo‘shish
+
+1. Repozitoriyani fork qiling.
+2. O‘zingizning branchingizda o‘zgartirishlar qiling: `git checkout -b feature/branch-name`
+3. O‘zgartirishlarni commit qiling: `git commit -m "Add some feature"`
+4. Branchni push qiling: `git push origin feature/branch-name`
+5. Pull request yuboring.
+
+## 📄 Litsenziya
+
+Bu loyiha MIT litsenziyasi bilan himoyalangan. Batafsil ma’lumot `LICENSE` faylida.
+
+---
+
+© 2025 Ish Izla. Barcha huquqlar himoyalangan.
