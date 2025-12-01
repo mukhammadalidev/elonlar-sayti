@@ -59,3 +59,10 @@ def contact_view(request):
         messages.success(request, "Xabaringiz yuborildi, rahmat!")
         return redirect("contact")
     return render(request, "contact.html")
+
+
+def about_view(request):
+    return render(request,'pages/about.html')
+
+def faq_view(request):
+    return render(request,'pages/faq.html')

@@ -12,7 +12,12 @@ class Login(forms.Form):
 
 
 
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username','first_name','last_name','email','user_roles','password',)
+
 class Profile(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ('username','first_name','last_name','email',)
+        fields = ('username','first_name','last_name','email','user_roles',)

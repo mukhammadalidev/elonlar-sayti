@@ -1,5 +1,5 @@
 from django import forms
-from .models import Job
+from .models import Job,Application
 
 class AdsEmployer(forms.ModelForm):
     class Meta:
@@ -12,3 +12,9 @@ class AdsEmployer(forms.ModelForm):
 #     class Meta:
 #         model = EmployerProfile
 #         fields = ('company_name',)
+
+
+class ApplicationForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = ('message',)

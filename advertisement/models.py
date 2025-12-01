@@ -51,6 +51,13 @@ class AdvertisementModel(models.Model):
 
 
 
-class ApplyModel(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
-    advertisement = models.ForeignKey(AdvertisementModel,on_delete=models.CASCADE)
+
+
+class Application(models.Model):
+    job = models.ForeignKey(Job,on_delete=models.CASCADE)
+    applicant = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    message = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.applicant.username} → {self.job.title}"

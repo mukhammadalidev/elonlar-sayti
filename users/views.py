@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .forms import Login,Profile
+from .forms import Login,Profile,RegisterForm
 from django.contrib.auth import authenticate,login
 from django.contrib import messages
 from .models import CustomUser
@@ -31,13 +31,15 @@ class UserLoginView(View):
 
 
 def profile_view(request):
-    user = request.user
+    
 
     if request.method == 'PUT':
         profile = Profile(request.FORM)
         if profile.is_valid():
             profile
-    return render(request,'pages/profile.html')
+    else:
+        form = Profile(instance=request.user)
+        return render(request,'pages/profile.html',{"form":form})
 
 
 from django.contrib.auth import logout
@@ -46,3 +48,13 @@ from django.shortcuts import redirect
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+
+
+class RegisterView(View):
+    def get(self,request):
+        form = RegisterForm()
+        context={
+            "form":form
+        }
+        return render(request,'pages/register.html',context=context)

@@ -4,77 +4,114 @@
 <div class="container py-5">
 
     <!-- Back button -->
-    <a href="javascript:history.back()" class="btn btn-outline-secondary mb-3">
+    <a href="javascript:history.back()" class="btn btn-light border mb-4 rounded-pill px-4 py-2 shadow-sm">
         <i class="fa-solid fa-arrow-left"></i> Orqaga
     </a>
 
-    <div class="card shadow-lg border-0">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+        <!-- Top banner -->
+        <div class="p-4 bg-primary text-white">
+            <h2 class="fw-bold mb-1">{{ product.title }}</h2>
+            <p class="mb-0 opacity-75">
+                <i class="fa-solid fa-location-dot"></i> {{ product.location }}
+            </p>
+        </div>
+
         <div class="card-body p-4">
 
-            <!-- Ish sarlavhasi -->
-            <h2 class="fw-bold mb-3">{{ product.title }}</h2>
-
-            <!-- Kompaniya bloki -->
+            <!-- Employer info -->
             <div class="d-flex align-items-center mb-4">
                 {% if product.employer.logo %}
                     <img src="{{ product.employer.logo.url }}" 
-                         class="rounded-circle me-3" 
-                         width="70" height="70" 
+                         class="rounded-circle me-3 shadow-sm"
+                         width="75" height="75" 
                          style="object-fit: cover;">
                 {% endif %}
 
                 <div>
-                    <h5 class="mb-0">
-                        <a href="" class="text-decoration-none">
-                            {{ product.employer.company_name }}
-                        </a>
-                    </h5>
-                    <p class="text-muted mb-0">Ish beruvchi</p>
+                    <h4 class="fw-semibold mb-1">{{ product.employer.company_name }}</h4>
+                    <a href="" class="text-decoration-none text-primary">
+                        Kompaniya profili →
+                    </a>
                 </div>
             </div>
 
-            <hr>
+            <hr class="my-4">
 
-            <!-- Ish tafsilotlari -->
-            <h4 class="fw-semibold">Ish haqida</h4>
-            <p class="mt-2" style="line-height: 1.7;">{{ product.description }}</p>
+            <!-- Job details -->
+            <h4 class="fw-bold mb-3">Ish haqida</h4>
 
-            <div class="mt-4">
-                <p class="mb-1"><strong>Maosh:</strong> {{ product.salary|default:"Kelishilgan" }}</p>
-                <p class="mb-1"><strong>Kategoriya:</strong> {{ product.category.name }}</p>
-                <p class="mb-1"><strong>Joylashuv:</strong> {{ product.location }}</p>
-            {% comment %} product.phone_number = '998901234567' {% endcomment %}
-<p class="mb-1">
-    <strong>Telefon Nomer:</strong> 
-    +{{ product.phone_number|slice:":3" }} 
-    {{ product.phone_number|slice:"3:5" }} 
-    {{ product.phone_number|slice:"5:8" }} 
-    {{ product.phone_number|slice:"8:10" }} 
-    {{ product.phone_number|slice:"10:12" }}
-</p>
+            <p class="text-secondary" style="line-height: 1.8; font-size: 1.05rem;">
+                {{ product.description }}
+            </p>
 
-                <p class="mb-1"><strong>Sana:</strong> {{ product.created_at|date:"d.m.Y" }}</p>
+            <div class="row mt-4 g-3">
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 shadow-sm">
+                        <strong>Maosh:</strong><br>
+                        <span class="fs-5 fw-semibold text-success">
+                            {{ product.salary|default:"Kelishilgan" }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 shadow-sm">
+                        <strong>Kategoriya:</strong>
+                        <p class="mb-0">{{ product.category.name }}</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 shadow-sm">
+                        <strong>Telefon:</strong><br>
+                        <span class="fw-semibold">
+
+                            +{{ product.phone_number|slice:":3" }} 
+                            {{ product.phone_number|slice:"3:5" }} 
+                            {{ product.phone_number|slice:"5:8" }} 
+                            {{ product.phone_number|slice:"8:10" }} 
+                            {{ product.phone_number|slice:"10:12" }}
+
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-light rounded-3 shadow-sm">
+                        <strong>E'lon joylash sanasi:</strong>
+                        <p class="mb-0">{{ product.created_at|date:"d.m.Y" }}</p>
+                    </div>
+                </div>
+
             </div>
 
-            <hr>
+            <hr class="my-4">
 
-            <!-- Action buttons -->
-            <div class="d-flex gap-3 mt-4">
+            <!-- Buttons -->
+            <div class="d-flex flex-wrap gap-3 mt-3">
 
-                <button class="btn btn-primary d-flex align-items-center gap-2">
+                <a href="{% url 'job:apply_for_job' product.pk %}" class="btn btn-primary px-4 py-2 rounded-3 shadow-sm d-flex align-items-center gap-2">
                     <i class="fa-solid fa-paper-plane"></i>
                     Ishga topshirish
+                </a>
+
+                <button class="btn btn-outline-dark px-4 py-2 rounded-3 shadow-sm d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Ulashish
                 </button>
 
-                <a href="" 
-                   class="btn btn-outline-dark d-flex align-items-center gap-2">
-                    <i class="fa-solid fa-building"></i>
-                    Kompaniya profili
-                </a>
+                <button class="btn btn-outline-danger px-4 py-2 rounded-3 shadow-sm d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-heart"></i>
+                    Saqlash
+                </button>
 
             </div>
 
         </div>
     </div>
+
 </div>
 {% endblock %}
